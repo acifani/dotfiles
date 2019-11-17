@@ -18,7 +18,6 @@ if ! zgen saved; then
 
   zgen load unixorn/autoupdate-zgen
   zgen load chrissicool/zsh-256color
-  zgen load marzocchi/zsh-notify
   zgen load junegunn/fzf
   zgen load andrewferrier/fzf-z
   zgen load zsh-users/zsh-autosuggestions
