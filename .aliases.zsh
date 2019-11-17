@@ -5,4 +5,5 @@ alias gll="git pull"
 alias gsh="git push"
 alias -g F="| fzf"
 alias -g G="| rg"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ls="exa"
