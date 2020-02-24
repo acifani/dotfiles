@@ -6,6 +6,7 @@ prompt_order = [
     "git_state",
     "git_status",
     "nix_shell",
+    "kubernetes",
     "memory_usage",
     "env_var",
     "cmd_duration",
@@ -33,3 +34,7 @@ disabled = true
 
 [python]
 disabled = true
+
+[kubernetes]
+disabled = true
+symbol = "☸️ "

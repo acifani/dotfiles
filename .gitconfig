@@ -51,7 +51,7 @@
     new = green bold
     whitespace = red reverse
 [core]
-    pager = diff-so-fancy | less --tabs=4 -RFX
+	  pager = delta --dark
     show = diff-so-fancy | less --tabs=4 -RFX
     excludesfile = /Users/alessandro.cifani/.gitignore_global
 
