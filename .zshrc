@@ -1,32 +1,36 @@
-source "${HOME}/.zgen/zgen.zsh"
+source "${HOME}/.zgenom/zgenom.zsh"
+
+zgenom autoupdate --background
 
 # if the init script doesn't exist
-if ! zgen saved; then
+if ! zgenom saved; then
 
   # specify plugins here
-  zgen oh-my-zsh
-  zgen oh-my-zsh plugins/fd
-  zgen oh-my-zsh plugins/git
-  zgen oh-my-zsh plugins/asdf
-  zgen oh-my-zsh plugins/yarn
-  zgen oh-my-zsh plugins/docker
-  zgen oh-my-zsh plugins/npm
-  zgen oh-my-zsh plugins/colorize
-  zgen oh-my-zsh plugins/golang
-  zgen oh-my-zsh plugins/node
-  zgen oh-my-zsh plugins/command-not-found
+  zgenom ohmyzsh
+  zgenom ohmyzsh plugins/asdf
+  zgenom ohmyzsh plugins/command-not-found
+  zgenom ohmyzsh plugins/docker
+  zgenom ohmyzsh plugins/fd
+  zgenom ohmyzsh plugins/gh
+  zgenom ohmyzsh plugins/git
+  zgenom ohmyzsh plugins/golang
+  zgenom ohmyzsh plugins/osx
+  zgenom ohmyzsh plugins/kubectl
+  zgenom ohmyzsh plugins/lein
+  zgenom ohmyzsh plugins/rust
+  zgenom ohmyzsh plugins/yarn
 
-  zgen load unixorn/autoupdate-zgen
-  zgen load chrissicool/zsh-256color
-  zgen load junegunn/fzf
-  zgen load andrewferrier/fzf-z
-  zgen load zsh-users/zsh-autosuggestions
-  zgen load zsh-users/zsh-completions src
-  zgen load zsh-users/zsh-syntax-highlighting
-  zgen load adrien-f/docker-zsh
+  zgenom load andrewferrier/fzf-z
+  zgenom load chrissicool/zsh-256color
+  zgenom load junegunn/fzf
+  zgenom load srijanshetty/docker-zsh
+  zgenom load unixorn/autoupdate-zgenom
+  zgenom load zsh-users/zsh-autosuggestions
+  zgenom load zsh-users/zsh-completions src
+  zgenom load zsh-users/zsh-syntax-highlighting
 
   # generate the init script from plugins above
-  zgen save
+  zgenom save
 fi
 
 ZSH_THEME=""

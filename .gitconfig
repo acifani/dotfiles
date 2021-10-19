@@ -32,10 +32,12 @@
     undo = reset HEAD~1 --mixed
     amend = commit --amend
     bclean = "!git checkout master && git sync && git pull && git branch -d $(git branch --merged | grep master -v)" 
+    cleanbranches = "!git checkout -q master && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done"
     wip = "!git add . && git commit -am ""WIP"""
     unwip = reset HEAD^
     fix = commit --fixup 
     rom = rebase origin/master
+	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 [color]
     ui = true
 [color "diff-highlight"]

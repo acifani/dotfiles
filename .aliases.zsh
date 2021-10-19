@@ -1,5 +1,6 @@
 alias dl="docker logs"
 alias dlf="docker logs -f"
+alias deit="docker exec -it"
 alias v="nvim"
 alias gll="git pull"
 alias gsh="git push"
