@@ -18,4 +18,4 @@ $ dotfiles checkout
 
 ### Finishing up
 
-- Install zgen and vim-plug
+- Install [zgenom](https://github.com/jandamm/zgenom), [vim-plug](https://github.com/junegunn/vim-plug)
