@@ -14,7 +14,7 @@ if ! zgenom saved; then
   zgenom ohmyzsh plugins/gh
   zgenom ohmyzsh plugins/git
   zgenom ohmyzsh plugins/golang
-  zgenom ohmyzsh plugins/osx
+  zgenom ohmyzsh plugins/macos
   zgenom ohmyzsh plugins/kubectl
   zgenom ohmyzsh plugins/lein
   zgenom ohmyzsh plugins/rust
