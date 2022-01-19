@@ -1,8 +1,8 @@
 " init vim-plug
 call plug#begin('~/.config/nvim/plugged')
 
-Plug '/usr/local/opt/fzf' " load existing fzf
-Plug 'junegunn/fzf.vim' 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter' 
 Plug 'joshdick/onedark.vim' 
 Plug 'sheerun/vim-polyglot' " syntax support for various languages

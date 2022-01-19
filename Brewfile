@@ -51,7 +51,7 @@ cask "charles"
 cask "disk-inventory-x"
 cask "dozer"
 cask "font-fira-code"
-cask "font-source-code-pro"
+cask "font-jetbrains-mono"
 cask "fork"
 cask "gas-mask"
 cask "imageoptim"
@@ -68,6 +68,5 @@ cask "whatsapp"
 mas "1Password 7", id: 1333542190
 mas "AdGuard for Safari", id: 1440147259
 mas "Amphetamine", id: 937984704
-mas "Minimal Consent", id: 1514164630
 mas "NextDNS", id: 1464122853
 mas "Stockfish", id: 801463932

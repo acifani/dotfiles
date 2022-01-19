@@ -50,3 +50,6 @@ export LC_ALL=en_US.UTF-8
 
 # prompt
 eval "$(starship init zsh)"
+
+export PATH="$PATH:$HOME/utils/"
+
