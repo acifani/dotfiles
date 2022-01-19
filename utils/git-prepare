@@ -1,0 +1,10 @@
+#! /bin/bash
+
+set -ex
+
+git checkout master
+git sync
+git pull
+git ls
+git cleanbranches
+
