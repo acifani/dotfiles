@@ -1,59 +1,62 @@
 [user]
-    name = Alessandro Cifani
-    email = alessandro.cifani@gmail.com
+	name = Alessandro Cifani
+	email = alessandro.cifani@gmail.com
+[core]
+	pager = delta --dark
+	show = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = ~/.gitignore_global
 [push]
-    default = simple
+	default = simple
 [pull]
-    rebase = true
+	rebase = true
 [log]
-    abbrevCommit = true
-    decorate = true
+	abbrevCommit = true
+	decorate = true
+[commit]
+	gpgsign = true
+[fetch]
+	prune = true
 [alias]
-    co = checkout
-    cob = checkout -b
-    ls = log --oneline --decorate -10
-    ld = log --oneline --decorate --date=relative
-    s = status -s
-    st = status -sb
-    d = diff
-    dc = diff --cached
-    dw = diff --word-diff
-    c = commit
-    cam = commit -am
-    cm = commit -m
-    a = add
-    ap = add -p
-    p = push
-    pob = git push origin HEAD
-    pf = push --force-with-lease 
-    b = branch
-    sync = fetch --prune
-    uncommit = reset HEAD^
-    undo = reset HEAD~1 --mixed
-    amend = commit --amend
-    bclean = "!git checkout master && git sync && git pull && git branch -d $(git branch --merged | grep master -v)" 
-    cleanbranches = "!git checkout -q master && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done"
-    wip = "!git add . && git commit -am ""WIP"""
-    unwip = reset HEAD^
-    fix = commit --fixup 
-    rom = rebase origin/master
+	co = checkout
+	cob = checkout -b
+	ls = log --oneline --decorate -10
+	ld = log --oneline --decorate --date=relative
+	s = status -s
+	st = status -sb
+	d = diff
+	dc = diff --cached
+	dw = diff --word-diff
+	c = commit
+	cam = commit -am
+	cm = commit -m
+	a = add
+	ap = add -p
+	p = push
+	pob = git push origin HEAD
+	pf = push --force-with-lease
+	b = branch
+	sync = fetch --prune
+	uncommit = reset HEAD^
+	undo = reset HEAD~1 --mixed
+	amend = commit --amend
+	bclean = "!git checkout master && git sync && git pull && git branch -d $(git branch --merged | grep master -v)"
+	cleanbranches = "!git checkout -q master && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done"
+	wip = "!git add . && git commit -am ""WIP"""
+	unwip = reset HEAD^
+	fix = commit --fixup
+	rom = rebase origin/master
 	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 [color]
-    ui = true
+	ui = true
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [color "diff"]
-    meta = yellow
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-[core]
-	  pager = delta --dark
-    show = diff-so-fancy | less --tabs=4 -RFX
-    excludesfile = /Users/alessandro.cifani/.gitignore_global
-
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
