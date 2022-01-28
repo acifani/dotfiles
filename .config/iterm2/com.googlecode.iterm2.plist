@@ -51164,6 +51164,8 @@
 	<true/>
 	<key>FocusFollowsMouse</key>
 	<false/>
+	<key>ForceAntialiasingOnRetina</key>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000-0x30</key>
@@ -52004,7 +52006,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>JetBrainsMonoRoman-Medium 14</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>

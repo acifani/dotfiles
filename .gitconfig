@@ -1,6 +1,6 @@
 [user]
 	name = Alessandro Cifani
-	email = alessandro.cifani@adevinta.com
+	email = alessandro.cifani@gmail.com
 [core]
 	pager = delta --dark
 	show = diff-so-fancy | less --tabs=4 -RFX
