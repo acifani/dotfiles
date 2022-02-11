@@ -5,8 +5,6 @@ format = """\
     $git_branch\
     $git_state\
     $git_status\
-    $nix_shell\
-    $kubernetes\
     $memory_usage\
     $env_var\
     $cmd_duration\
@@ -21,22 +19,3 @@ format = """\
 success_symbol = "[λ](bold green)"
 error_symbol = "[λ](bold red)"
 vicmd_symbol = "[❮](bold green)"
-
-[aws]
-disabled = true
-
-[golang]
-disabled = true
-
-[nodejs]
-disabled = true
-
-[package]
-disabled = true
-
-[python]
-disabled = true
-
-[kubernetes]
-disabled = true
-symbol = "☸️ "
