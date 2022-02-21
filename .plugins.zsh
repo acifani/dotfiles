@@ -17,6 +17,5 @@ alias preview="fzf --preview 'bat --color always {}'"
 # scm_breeze
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
-# z 
+# z
 . $(brew --prefix)/etc/profile.d/z.sh
-

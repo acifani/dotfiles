@@ -42,14 +42,13 @@ bashcompinit
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-. ~/.aliases.zsh
 . ~/.env.zsh
 . ~/.functions.zsh
 . ~/.plugins.zsh
 . ~/.work.zsh
+. ~/.aliases.zsh
 
 # prompt
 eval "$(starship init zsh)"
 
 export PATH="$PATH:$HOME/utils/"
-
