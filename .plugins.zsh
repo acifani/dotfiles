@@ -10,9 +10,6 @@ export FZF_DEFAULT_OPTS='
 '
 alias preview="fzf --preview 'bat --color always {}'"
 
-# asdf
-. $(brew --prefix)/opt/asdf/libexec/asdf.sh
-
 # scm_breeze
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 

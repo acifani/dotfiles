@@ -1,20 +1,22 @@
 tap "acifani/tap", "git@github.com:acifani/homebrew-tap.git"
-tap "derailed/k9s"
 tap "github/gh"
-tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
+tap "homebrew/test-bot"
+tap "int128/kubelogin"
+tap "tinygo-org/tools"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Securely manage AWS API credentials using AWS SSO
+brew "aws-sso-cli"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Command-line interface for SQLite
+brew "sqlite"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Diff that understands syntax
@@ -35,6 +37,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
 # Git extension for versioning large files
 brew "git-lfs"
 # GNU implementation of the famous stream editor
@@ -45,18 +49,30 @@ brew "gnupg"
 brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Kubernetes controller and tool for one-way encrypted Secrets
+brew "kubeseal"
 # Mac App Store command-line interface
 brew "mas"
 # NCurses Disk Usage
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Port scanning utility for large networks
+brew "nmap"
+# Development kit for the Java programming language
+brew "openjdk"
 # CLI for Postgres with auto-completion and syntax highlighting
 brew "pgcli"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Object-relational database system
+brew "postgresql@14"
+# Persistent key-value database, with built-in net interface
+brew "redis"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
 # HTTP regression testing and benchmarking utility
 brew "siege"
 # Cross-shell prompt for astronauts
@@ -69,7 +85,7 @@ brew "tree"
 brew "unzip"
 # Internet file retriever
 brew "wget"
-# Fork of youtube-dl with additional features and fixes
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Tracks most-used directories to make cd smarter
 brew "z"
@@ -78,34 +94,33 @@ brew "zsh"
 # Command-line application to show Formula1 schedules, standings, and results
 brew "acifani/tap/formula1-go"
 # Kubernetes CLI To Manage Your Clusters In Style!
-brew "derailed/k9s/k9s"
+brew "k9s"
+# A kubectl plugin for Kubernetes OpenID Connect authentication
+brew "int128/kubelogin/kubelogin"
+# TinyGo is a Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM.
+brew "tinygo-org/tools/tinygo"
+# Command-line interface for 1Password
+cask "1password-cli"
 # Application uninstaller
 cask "appcleaner"
-# Two-factor authentication software
-cask "authy"
 # Utility to create and modify archives
 cask "betterzip"
 # Web debugging Proxy application
 cask "charles"
 # Disk usage utility
 cask "disk-inventory-x"
-# Tool to hide status bar icons
-cask "dozer"
-# Free monospaced font with programming ligatures
 cask "font-fira-code"
-# Typeface made for developers
 cask "font-jetbrains-mono"
-# Developer targeted fonts with a high number of glyphs
 cask "font-jetbrains-mono-nerd-font"
 # GIT client
 cask "fork"
 # Hosts file editor/manager
 cask "gas-mask"
-# Tool to optimize images to a smaller size
+# Tool to optimise images to a smaller size
 cask "imageoptim"
-# Keyboard customizer
+# Keyboard customiser
 cask "karabiner-elements"
-# Customize mouse behavior
+# Customise mouse behavior
 cask "linearmouse"
 # Clipboard manager
 cask "maccy"
@@ -117,8 +132,6 @@ cask "rectangle"
 cask "spotify"
 # Text editor for code, markup and prose
 cask "sublime-text"
-# Open-source BitTorrent client
-cask "transmission"
 # Free and open-source OpenVPN client
 cask "tunnelblick"
 # Multimedia player
@@ -130,7 +143,10 @@ cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "AdGuard for Safari", id: 1440147259
 mas "Amphetamine", id: 937984704
+mas "Bakery", id: 1575220747
+mas "Hush", id: 1544743900
 mas "NextDNS", id: 1464122853
-mas "Super Agent", id: 1568262835
+mas "Stockfish", id: 801463932
 mas "Tailscale", id: 1475387142
 mas "Telegram", id: 747648890
+mas "Xcode", id: 497799835
