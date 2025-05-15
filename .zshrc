@@ -96,4 +96,3 @@ complete -C /opt/homebrew/bin/aws-sso aws-sso
 
 # END_AWS_SSO_CLI
 
-. "$HOME/.local/bin/env"
