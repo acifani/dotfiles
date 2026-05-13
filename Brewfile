@@ -1,16 +1,13 @@
 tap "acifani/tap", "git@github.com:acifani/homebrew-tap.git"
+tap "borgbackup/tap"
 tap "github/gh"
-tap "homebrew/test-bot"
 tap "int128/kubelogin"
-tap "tinygo-org/tools"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Securely manage AWS API credentials using AWS SSO
 brew "aws-sso-cli"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Command-line interface for SQLite
-brew "sqlite"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -27,7 +24,7 @@ brew "dive"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
@@ -43,16 +40,22 @@ brew "git-filter-repo"
 brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# GNU Pretty Good Privacy (PGP) package
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Improved top (interactive process viewer)
 brew "htop"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
 # Kubernetes controller and tool for one-way encrypted Secrets
 brew "kubeseal"
 # Mac App Store command-line interface
 brew "mas"
+# Mock code autogenerator for Golang
+brew "mockery"
 # NCurses Disk Usage
 brew "ncdu"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -65,8 +68,6 @@ brew "openjdk"
 brew "pgcli"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Object-relational database system
-brew "postgresql@14"
 # Persistent key-value database, with built-in net interface
 brew "redis"
 # Search tool like grep and The Silver Searcher
@@ -83,6 +84,8 @@ brew "telnet"
 brew "tree"
 # Extraction utility for .zip compressed archives
 brew "unzip"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
@@ -93,29 +96,17 @@ brew "z"
 brew "zsh"
 # Command-line application to show Formula1 schedules, standings, and results
 brew "acifani/tap/formula1-go"
-# Kubernetes CLI To Manage Your Clusters In Style!
-brew "k9s"
+# Deduplicating archiver with compression and authenticated encryption
+brew "borgbackup/tap/borgbackup-fuse"
 # A kubectl plugin for Kubernetes OpenID Connect authentication
 brew "int128/kubelogin/kubelogin"
-# TinyGo is a Go compiler for small places. Microcontrollers, WebAssembly, and command-line tools. Based on LLVM.
-brew "tinygo-org/tools/tinygo"
-# Command-line interface for 1Password
-cask "1password-cli"
 # Application uninstaller
 cask "appcleaner"
-# Utility to create and modify archives
-cask "betterzip"
-# Web debugging Proxy application
-cask "charles"
-# Disk usage utility
-cask "disk-inventory-x"
 cask "font-fira-code"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 # GIT client
 cask "fork"
-# Hosts file editor/manager
-cask "gas-mask"
 # Tool to optimise images to a smaller size
 cask "imageoptim"
 # Keyboard customiser
@@ -124,29 +115,24 @@ cask "karabiner-elements"
 cask "linearmouse"
 # Clipboard manager
 cask "maccy"
-# Collaboration platform for API development
-cask "postman"
+# File system integration
+cask "macfuse"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Music streaming service
 cask "spotify"
-# Text editor for code, markup and prose
-cask "sublime-text"
 # Free and open-source OpenVPN client
 cask "tunnelblick"
 # Multimedia player
 cask "vlc"
+# Desktop Backup Client for Borg
+cask "vorta"
 # Native desktop client for WhatsApp
 cask "whatsapp"
-# Video communication and virtual meeting platform
-cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "AdGuard for Safari", id: 1440147259
 mas "Amphetamine", id: 937984704
-mas "Bakery", id: 1575220747
 mas "Hush", id: 1544743900
 mas "NextDNS", id: 1464122853
-mas "Stockfish", id: 801463932
 mas "Tailscale", id: 1475387142
 mas "Telegram", id: 747648890
-mas "Xcode", id: 497799835

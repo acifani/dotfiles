@@ -52,6 +52,7 @@ export LC_ALL=en_US.UTF-8
 eval "$(starship init zsh)"
 
 export PATH="$PATH:$HOME/utils/"
+export PATH="$HOME/.local/bin:$PATH"
 
 # BEGIN_AWS_SSO_CLI
 
@@ -95,4 +96,6 @@ compdef __aws_sso_profile_complete aws-sso-profile
 complete -C /opt/homebrew/bin/aws-sso aws-sso
 
 # END_AWS_SSO_CLI
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
