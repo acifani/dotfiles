@@ -1,0 +1,5 @@
+#!/bin/bash
+# Re-runs whenever the mise config changes. Hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+set -euo pipefail
+command -v mise >/dev/null || exit 0
+mise install

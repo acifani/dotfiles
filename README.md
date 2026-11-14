@@ -1,21 +1,24 @@
 # dotfiles
 
-Personal dotfiles for MacOS
+Personal dotfiles for macOS and Linux, managed with [chezmoi](https://www.chezmoi.io/).
 
-## Usage
+## Setup on a new machine
 
-### Prerequisites
+1. macOS only: install [Homebrew](https://brew.sh/).
+2. Install [chezmoi](https://www.chezmoi.io/install/).
+3. Apply:
 
-- Homebrew
+   ```shell
+   chezmoi init --apply acifani
+   ```
 
-### Checkout files
+## Day to day
 
 ```shell
-git clone --bare git@github.com:acifani/dotfiles.git $HOME/.dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dotfiles checkout
+chezmoi edit ~/.zshrc     # edit the source, not the target
+chezmoi diff              # preview
+chezmoi apply             # write changes to $HOME
+chezmoi re-add            # pull edits made directly in $HOME back into the source
+chezmoi cd                # shell in the source repo to commit/push
+chezmoi update            # git pull + apply
 ```
-
-### Finishing up
-
-Run the `install.sh` script

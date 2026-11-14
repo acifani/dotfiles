@@ -1,0 +1,7 @@
+[tools]
+ast-grep = "latest"
+go = "latest"
+node = "lts"
+pnpm = "latest"
+python = "latest"
+uv = "latest"
