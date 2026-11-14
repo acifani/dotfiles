@@ -1,5 +1,4 @@
 tap "acifani/tap", "git@github.com:acifani/homebrew-tap.git"
-tap "github/gh"
 # The front-end to your dev env
 brew "mise"
 # Cryptography and SSL/TLS Toolkit
@@ -8,30 +7,16 @@ brew "openssl@3"
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Tool for exploring each layer in a docker image
-brew "dive"
-# Modern, maintained replacement for ls
-brew "eza"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# GitHub command-line tool
-brew "gh"
 # Distributed revision control system
 brew "git"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
-# Quickly rewrite git repository history
-brew "git-filter-repo"
-# Git extension for versioning large files
-brew "git-lfs"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Improved top (interactive process viewer)
 brew "htop"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # Mac App Store command-line interface
 brew "mas"
 # NCurses Disk Usage
@@ -40,10 +25,6 @@ brew "ncdu"
 brew "nmap"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Cross-shell prompt for astronauts
-brew "starship"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extraction utility for .zip compressed archives

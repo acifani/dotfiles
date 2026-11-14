@@ -1,0 +1,17 @@
+{{ if and (eq .chezmoi.os "linux") (lookPath "apt-get") -}}
+#!/bin/bash
+# Linux packages mise can't install. Re-runs whenever this file changes.
+set -euo pipefail
+
+packages=(curl git gnupg htop ncdu tree unzip wget zsh)
+
+missing=()
+for pkg in "${packages[@]}"; do
+    dpkg -s "$pkg" >/dev/null 2>&1 || missing+=("$pkg")
+done
+
+if ((${#missing[@]})); then
+    sudo apt-get update
+    sudo apt-get install -y "${missing[@]}"
+fi
+{{ end -}}

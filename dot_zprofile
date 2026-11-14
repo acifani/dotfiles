@@ -1,0 +1,2 @@
+# mise tools for non-interactive shells too (scripts, IDEs, git pager); ~/.zshrc runs `mise activate`
+export PATH="$HOME/.local/share/mise/shims:$PATH"

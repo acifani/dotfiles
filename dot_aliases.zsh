@@ -24,5 +24,5 @@ fi
 alias dl="docker logs"
 alias dlf="docker logs -f"
 alias deit="docker exec -it"
-alias dps=betterdps.rb
-alias dim=betterdim.rb
+# use ~/.local/bin/dps and dim, not the docker plugin aliases
+unalias dps dim 2>/dev/null
