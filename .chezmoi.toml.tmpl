@@ -6,13 +6,6 @@ umask = 0o022
 [data]
     email = {{ $email | quote }}
     signCommits = {{ $signCommits }}
-{{- if eq .chezmoi.os "darwin" }}
-    fd = "fd"
-{{- else if and (eq .chezmoi.os "linux") (has .chezmoi.osRelease.id (list "ubuntu" "debian")) }}
-    fd = "fdfind"
-{{- else }}
-    fd = "fd"
-{{- end }}
 
 [diff]
     pager = "delta"

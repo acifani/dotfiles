@@ -12,12 +12,8 @@ brew "curl"
 brew "dive"
 # Modern, maintained replacement for ls
 brew "eza"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system

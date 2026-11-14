@@ -5,7 +5,7 @@ Personal dotfiles for macOS and Linux, managed with [chezmoi](https://www.chezmo
 ## Setup on a new machine
 
 1. macOS only: install [Homebrew](https://brew.sh/).
-2. Install [chezmoi](https://www.chezmoi.io/install/).
+2. Install [chezmoi](https://www.chezmoi.io/install/). On Linux also install [mise](https://mise.jdx.dev/getting-started.html); on macOS the Brewfile does it.
 3. Apply:
 
    ```shell

@@ -1,3 +1,4 @@
+ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc")
 source "${HOME}/.zgenom/zgenom.zsh"
 
 zgenom autoupdate --background
@@ -24,7 +25,6 @@ if ! zgenom saved; then
 
     zgenom load andrewferrier/fzf-z
     zgenom load chrissicool/zsh-256color
-    zgenom load junegunn/fzf
     zgenom load srijanshetty/docker-zsh
     zgenom load unixorn/autoupdate-zgenom
     zgenom load zsh-users/zsh-autosuggestions
@@ -47,18 +47,19 @@ export LC_ALL=en_US.UTF-8
 # machine-local, not managed by chezmoi
 [ -f ~/.env.zsh ] && . ~/.env.zsh
 
+export PATH="$HOME/.local/bin:$PATH"
+
+# keep above the files below, they rely on mise-provided tools
+if command -v mise >/dev/null; then
+    eval "$(mise activate zsh)"
+fi
+
 . ~/.functions.zsh
 . ~/.plugins.zsh
 . ~/.aliases.zsh
 
 # prompt
 eval "$(starship init zsh)"
-
-export PATH="$HOME/.local/bin:$PATH"
-
-if command -v mise >/dev/null; then
-    eval "$(mise activate zsh)"
-fi
 
 # tabtab completions (npm packages)
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh

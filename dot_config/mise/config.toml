@@ -1,7 +1,10 @@
 [tools]
 ast-grep = "latest"
 bat = "latest"
+bun = "latest"
 difftastic = "latest"
+fd = "latest"
+fzf = "latest"
 go = "latest"
 neovim = "latest"
 node = "lts"
