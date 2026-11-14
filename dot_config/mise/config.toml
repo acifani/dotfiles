@@ -11,3 +11,6 @@ node = "lts"
 pnpm = "latest"
 python = "latest"
 uv = "latest"
+
+[settings]
+auto_update = true
