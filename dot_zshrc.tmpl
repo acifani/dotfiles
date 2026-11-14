@@ -16,10 +16,6 @@ if ! zgenom saved; then
 {{- if eq .chezmoi.os "darwin" }}
     zgenom ohmyzsh plugins/macos
 {{- end }}
-    zgenom ohmyzsh plugins/kubectl
-    zgenom ohmyzsh plugins/lein
-    zgenom ohmyzsh plugins/rust
-    zgenom ohmyzsh plugins/yarn
 
     zgenom load srijanshetty/docker-zsh
     zgenom load zsh-users/zsh-autosuggestions
