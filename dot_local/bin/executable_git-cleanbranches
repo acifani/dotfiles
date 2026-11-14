@@ -1,0 +1,17 @@
+#!/bin/bash
+# Delete local branches that are merged into main, including squash merges.
+set -euo pipefail
+
+git checkout -q main
+git for-each-ref refs/heads/ --format='%(refname:short)' | while read -r branch; do
+    [[ $branch == main ]] && continue
+    if git merge-base --is-ancestor "$branch" main; then
+        git branch -D "$branch"
+        continue
+    fi
+    # squash-merged: a single commit with the branch's whole diff is already on main
+    squashed=$(git commit-tree "$branch^{tree}" -p "$(git merge-base main "$branch")" -m _)
+    if [[ $(git cherry main "$squashed") == -* ]]; then
+        git branch -D "$branch"
+    fi
+done

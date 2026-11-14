@@ -1,11 +1,16 @@
 {{- $email := promptStringOnce . "email" "Git email" -}}
-{{- $signCommits := promptBoolOnce . "signCommits" "Sign git commits with GPG" -}}
+{{- $signCommits := promptBoolOnce . "signCommits" "Sign git commits with SSH" -}}
+{{- $sshSigningKey := "" -}}
+{{- if $signCommits -}}
+{{-   $sshSigningKey = promptStringOnce . "sshSigningKey" "Public SSH key to sign with" "~/.ssh/id_ed25519.pub" -}}
+{{- end -}}
 
 umask = 0o022
 
 [data]
     email = {{ $email | quote }}
     signCommits = {{ $signCommits }}
+    sshSigningKey = {{ $sshSigningKey | quote }}
 
 [diff]
     pager = "delta"

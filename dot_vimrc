@@ -8,8 +8,6 @@ Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot' " syntax support for various languages
 Plug 'dense-analysis/ale' " LSP client + linting
 Plug 'tpope/vim-fugitive' " git integration
-Plug 'Quramy/tsuquyomi' " typescript stuff
-Plug 'alampros/vim-styled-jsx' " styled jsx syntax
 
 call plug#end()
 
@@ -165,6 +163,4 @@ nnoremap <leader>gtd :ALEGoToTypeDefinition<CR>
 " use rg for fzf file search
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 
-" tsuquyomi
-let g:tsuquyomi_shortest_import_path = 1
 

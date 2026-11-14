@@ -3,8 +3,6 @@
 set -ex
 
 git checkout main
-git sync
 git pull
 git ls
 git cleanbranches
-

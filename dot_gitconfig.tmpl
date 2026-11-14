@@ -1,6 +1,12 @@
 [user]
 	name = Alessandro Cifani
 	email = {{ .email }}
+{{- if .signCommits }}
+	signingkey = {{ .sshSigningKey }}
+
+[gpg]
+	format = ssh
+{{- end }}
 
 [column]
 	ui = auto
@@ -8,7 +14,7 @@
 [core]
 	pager = delta
 	excludesfile = ~/.gitignore_global
-	editor = vim
+	editor = nvim
 
 [push]
 	default = simple
@@ -83,14 +89,9 @@
 	pob = push origin HEAD
 	pf = push --force-with-lease
 	b = branch
-	sync = fetch --prune
-	uncommit = reset HEAD^
 	undo = reset HEAD~1 --mixed
 	amend = commit --amend --no-edit
-	bclean = "!git checkout main && git sync && git pull && git branch -d $(git branch --merged | grep -v main)"
-	cleanbranches = "!git checkout -q main && git for-each-ref refs/heads/ '--format=%(refname:short)' | while read branch; do mergeBase=$(git merge-base main $branch) && case $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) in -*) git branch -D $branch;; esac; done"
 	wip = "!git add . && git commit -am ""WIP"""
-	unwip = reset HEAD^
 	fix = commit --fixup
 	rom = rebase origin/main
 	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
