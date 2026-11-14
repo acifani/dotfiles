@@ -10,5 +10,8 @@ export FZF_DEFAULT_OPTS='
 '
 alias preview="fzf --preview 'bat --color always {}'"
 
+# fd
+command -v fd >/dev/null && source <(fd --gen-completions zsh)
+
 # scm_breeze
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
