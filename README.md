@@ -32,12 +32,18 @@ chezmoi edit-config       # change an answer (profile, dev, docker, appdir, work
 chezmoi data              # show this machine's answers
 ```
 
-The `claude`, `codex` and `opencode` flags manage each harness's plugins and
-skills, merged into its own config file so the harness's own edits survive.
-The lists live in `dot_claude/modify_settings.json`, `.chezmoiscripts/*-codex-plugins.sh.tmpl`,
-`dot_config/opencode/modify_private_opencode.jsonc` and `.chezmoiscripts/*-agent-skills.sh.tmpl`.
-Applies only add: drop an entry, or turn a flag off, and uninstall by hand.
-Why it works this way: `docs/research/harness-config.md`.
+## Coding harnesses
+
+The `claude`, `codex` and `opencode` flags pick which harnesses get plugins and skills.
+
+```shell
+chezmoi edit ~/.claude/settings.json             # Claude plugins and settings
+chezmoi edit ~/.config/opencode/opencode.jsonc   # OpenCode plugins, skills and settings
+chezmoi edit ~/.codex/config.toml                # Codex settings
+chezmoi cd                                       # Codex plugins and shared skills live in .chezmoiscripts/
+```
+
+Applies only add. To drop something, remove it from the list and uninstall it by hand.
 
 ## Day to day
 
