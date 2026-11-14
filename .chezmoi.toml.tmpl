@@ -10,6 +10,9 @@
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $appdir = promptStringOnce . "appdir" "Cask install directory" "/Applications" -}}
 {{- end -}}
+{{- $claude := promptBoolOnce . "claude" "Configure Claude Code plugins and skills" false -}}
+{{- $codex := promptBoolOnce . "codex" "Configure Codex plugins and skills" false -}}
+{{- $opencode := promptBoolOnce . "opencode" "Configure OpenCode plugins and skills" false -}}
 {{- $signCommits := promptBoolOnce . "signCommits" "Sign git commits with SSH" -}}
 {{- $sshSigningKey := "" -}}
 {{- if $signCommits -}}
@@ -29,6 +32,9 @@ umask = 0o022
 {{- if eq .chezmoi.os "darwin" }}
     appdir = {{ $appdir | quote }}
 {{- end }}
+    claude = {{ $claude }}
+    codex = {{ $codex }}
+    opencode = {{ $opencode }}
     signCommits = {{ $signCommits }}
     sshSigningKey = {{ $sshSigningKey | quote }}
 
