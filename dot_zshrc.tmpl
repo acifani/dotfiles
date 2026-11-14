@@ -9,15 +9,19 @@ if ! zgenom saved; then
     # specify plugins here
     zgenom ohmyzsh
     zgenom ohmyzsh plugins/command-not-found
-    zgenom ohmyzsh plugins/docker
-    zgenom ohmyzsh plugins/gh
     zgenom ohmyzsh plugins/git
+{{- if .dev }}
+    zgenom ohmyzsh plugins/gh
     zgenom ohmyzsh plugins/golang
+{{- end }}
+{{- if .docker }}
+    zgenom ohmyzsh plugins/docker
+    zgenom load srijanshetty/docker-zsh
+{{- end }}
 {{- if eq .chezmoi.os "darwin" }}
     zgenom ohmyzsh plugins/macos
 {{- end }}
 
-    zgenom load srijanshetty/docker-zsh
     zgenom load zsh-users/zsh-autosuggestions
     zgenom load zsh-users/zsh-completions src
     zgenom load zsh-users/zsh-syntax-highlighting

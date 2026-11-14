@@ -1,0 +1,35 @@
+[tools]
+# baseline: every machine
+bat = "latest"
+delta = "latest"
+eza = "latest"
+fd = "latest"
+fzf = "latest"
+git-lfs = "latest"
+jq = "latest"
+neovim = "latest"
+ripgrep = "latest"
+starship = "latest"
+zoxide = "latest"
+{{- if .dev }}
+
+# dev
+ast-grep = "latest"
+bun = "latest"
+difftastic = "latest"
+gh = "latest"
+git-filter-repo = "latest"
+go = "latest"
+node = "lts"
+pnpm = "latest"
+python = "latest"
+uv = "latest"
+{{- end }}
+{{- if .docker }}
+
+# docker
+dive = "latest"
+{{- end }}
+
+[settings]
+auto_update = true

@@ -29,6 +29,11 @@
 [commit]
 	verbose = true
 	gpgsign = {{ .signCommits }}
+{{- if .workEmail }}
+
+[includeIf "gitdir:~/work/"]
+	path = ~/.gitconfig-work
+{{- end }}
 
 [fetch]
 	prune = true
@@ -57,13 +62,6 @@
 
 [diff]
 	colorMoved = default
-	tool = difftastic
-
-[pager]
-	difftool = true
-
-[difftool]
-  prompt = false
 
 [rerere]
 	enabled = true
@@ -94,18 +92,28 @@
 	fix = commit --fixup
 	rom = rebase origin/main
 	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
-	dft = difftool
 
 [delta]
 	navigate = true    # use n and N to move between diff sections
 	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 	line-numbers = true
 
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
-
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+{{- if .dev }}
+
+# difftastic, installed with the dev tools
+[diff]
+	tool = difftastic
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+	difftool = true
+[alias]
+	dft = difftool
+{{- end }}

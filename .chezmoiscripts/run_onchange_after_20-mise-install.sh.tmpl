@@ -1,5 +1,5 @@
 #!/bin/bash
-# Re-runs whenever the mise config changes. Hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+# Re-runs whenever the mise config changes. Hash: {{ includeTemplate "dot_config/mise/config.toml.tmpl" . | sha256sum }}
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
 mise install

@@ -20,9 +20,12 @@ alias lS='eza -1'                                                      # one col
 alias lt='eza --tree --level=2'                                        # tree
 fi
 
+{{- if .docker }}
+
 # docker
 alias dl="docker logs"
 alias dlf="docker logs -f"
 alias deit="docker exec -it"
 # use ~/.local/bin/dps and dim, not the docker plugin aliases
 unalias dps dim 2>/dev/null
+{{- end }}

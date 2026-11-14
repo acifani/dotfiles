@@ -1,6 +1,20 @@
 README.md
 Brewfile
 
+{{ if not .dev }}
+.config/gh
+{{ end }}
+
+{{ if not .docker }}
+.local/bin/dps
+.local/bin/dim
+.local/bin/docker-cleanup.sh
+{{ end }}
+
+{{ if not .workEmail }}
+.gitconfig-work
+{{ end }}
+
 {{ if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .config/linearmouse

@@ -1,4 +1,7 @@
 {{- $email := promptStringOnce . "email" "Git email" -}}
+{{- $workEmail := promptStringOnce . "workEmail" "Git email for ~/work (empty for none)" -}}
+{{- $dev := promptBoolOnce . "dev" "Install dev tools" -}}
+{{- $docker := promptBoolOnce . "docker" "Install docker helpers" -}}
 {{- $signCommits := promptBoolOnce . "signCommits" "Sign git commits with SSH" -}}
 {{- $sshSigningKey := "" -}}
 {{- if $signCommits -}}
@@ -9,6 +12,9 @@ umask = 0o022
 
 [data]
     email = {{ $email | quote }}
+    workEmail = {{ $workEmail | quote }}
+    dev = {{ $dev }}
+    docker = {{ $docker }}
     signCommits = {{ $signCommits }}
     sshSigningKey = {{ $sshSigningKey | quote }}
 
