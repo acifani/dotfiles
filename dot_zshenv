@@ -1,0 +1,2 @@
+# Debian/Ubuntu: skip the compinit in /etc/zsh/zshrc; oh-my-zsh runs its own
+skip_global_compinit=1
