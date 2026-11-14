@@ -4,14 +4,10 @@ tap "github/gh"
 brew "mise"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Diff that understands syntax
-brew "difftastic"
 # Tool for exploring each layer in a docker image
 brew "dive"
 # Modern, maintained replacement for ls
@@ -44,8 +40,6 @@ brew "jq"
 brew "mas"
 # NCurses Disk Usage
 brew "ncdu"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Port scanning utility for large networks
 brew "nmap"
 # Pinentry for GPG on Mac

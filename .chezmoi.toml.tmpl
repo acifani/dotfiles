@@ -1,7 +1,11 @@
 {{- $email := promptStringOnce . "email" "Git email" -}}
+{{- $signCommits := promptBoolOnce . "signCommits" "Sign git commits with GPG" -}}
+
+umask = 0o022
 
 [data]
     email = {{ $email | quote }}
+    signCommits = {{ $signCommits }}
 {{- if eq .chezmoi.os "darwin" }}
     fd = "fd"
 {{- else if and (eq .chezmoi.os "linux") (has .chezmoi.osRelease.id (list "ubuntu" "debian")) }}

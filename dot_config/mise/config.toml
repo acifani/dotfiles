@@ -1,6 +1,9 @@
 [tools]
 ast-grep = "latest"
+bat = "latest"
+difftastic = "latest"
 go = "latest"
+neovim = "latest"
 node = "lts"
 pnpm = "latest"
 python = "latest"
