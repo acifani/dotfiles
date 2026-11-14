@@ -2,7 +2,7 @@
 
 set -ex
 
-git checkout master
+git checkout main
 git sync
 git pull
 git ls

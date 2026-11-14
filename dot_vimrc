@@ -6,12 +6,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter' 
 Plug 'joshdick/onedark.vim' 
 Plug 'sheerun/vim-polyglot' " syntax support for various languages
-Plug 'w0rp/ale' " LSP client + linting
+Plug 'dense-analysis/ale' " LSP client + linting
 Plug 'tpope/vim-fugitive' " git integration
 Plug 'Quramy/tsuquyomi' " typescript stuff
 Plug 'alampros/vim-styled-jsx' " styled jsx syntax
 
 call plug#end()
+
+" leader is space; set before any <leader> mapping
+let mapleader=" "
 
 
 " not compatible with old vim
@@ -79,7 +82,6 @@ nnoremap B ^
 nnoremap E $
 
 " leader shortcuts
-let mapleader=" " " leader is comma
 " jk is escape
 inoremap jk <esc>
 " edit vimrc/zshrc and load vimrc bindings
