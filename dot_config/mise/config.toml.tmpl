@@ -16,7 +16,7 @@ zoxide = "latest"
 # dev
 ast-grep = "latest"
 bun = "latest"
-difftastic = "latest"
+"github:Wilfred/difftastic" = "latest"  # aqua registry asset name is stale
 gh = "latest"
 git-filter-repo = "latest"
 go = "latest"
@@ -24,6 +24,11 @@ node = "lts"
 pnpm = "latest"
 python = "latest"
 uv = "latest"
+{{- end }}
+{{- if eq .profile "work" }}
+
+# work
+ghq = "latest"
 {{- end }}
 {{- if .docker }}
 

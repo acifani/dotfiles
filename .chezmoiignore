@@ -1,5 +1,4 @@
 README.md
-Brewfile
 
 {{ if not .dev }}
 .config/gh
@@ -11,11 +10,10 @@ Brewfile
 .local/bin/docker-cleanup.sh
 {{ end }}
 
-{{ if not .workEmail }}
+{{ if not (and (eq .profile "work") .workEmail) }}
 .gitconfig-work
 {{ end }}
 
 {{ if ne .chezmoi.os "darwin" }}
-.config/karabiner
 .config/linearmouse
 {{ end }}

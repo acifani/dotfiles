@@ -1,7 +1,15 @@
 {{- $email := promptStringOnce . "email" "Git email" -}}
-{{- $workEmail := promptStringOnce . "workEmail" "Git email for ~/work (empty for none)" -}}
+{{- $profile := promptChoiceOnce . "profile" "Profile" (list "work" "personal") -}}
+{{- $workEmail := "" -}}
+{{- if eq $profile "work" -}}
+{{-   $workEmail = promptStringOnce . "workEmail" "Git email for ~/work (empty for none)" -}}
+{{- end -}}
 {{- $dev := promptBoolOnce . "dev" "Install dev tools" -}}
 {{- $docker := promptBoolOnce . "docker" "Install docker helpers" -}}
+{{- $appdir := "" -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $appdir = promptStringOnce . "appdir" "Cask install directory" "/Applications" -}}
+{{- end -}}
 {{- $signCommits := promptBoolOnce . "signCommits" "Sign git commits with SSH" -}}
 {{- $sshSigningKey := "" -}}
 {{- if $signCommits -}}
@@ -12,9 +20,15 @@ umask = 0o022
 
 [data]
     email = {{ $email | quote }}
+    profile = {{ $profile | quote }}
+{{- if eq $profile "work" }}
     workEmail = {{ $workEmail | quote }}
+{{- end }}
     dev = {{ $dev }}
     docker = {{ $docker }}
+{{- if eq .chezmoi.os "darwin" }}
+    appdir = {{ $appdir | quote }}
+{{- end }}
     signCommits = {{ $signCommits }}
     sshSigningKey = {{ $sshSigningKey | quote }}
 
