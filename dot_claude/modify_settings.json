@@ -1,0 +1,46 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /*
+  Merges the plugins and settings below into ~/.claude/settings.json and
+  leaves every other key alone, since Claude Code writes this file too.
+  Claude Code installs the enabled plugins itself on the next session start.
+  Additive: removing an entry here does not uninstall it.
+*/ -}}
+
+{{- $marketplaces := dict
+      "cursor-plugins" (dict "source" "github" "repo" "cursor/plugins")
+      "mattpocock"     (dict "source" "github" "repo" "mattpocock/skills")
+-}}
+{{- $plugins := list
+      "pstack@cursor-plugins"
+      "mattpocock-skills@mattpocock"
+-}}
+{{- /* Environment variables, merged key by key into "env". Values are strings. */ -}}
+{{- $env := dict
+      "CLAUDE_CODE_EXPERIMENTAL_CODE_MODE"   "1"
+      "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" "1"
+-}}
+{{- /* Top-level settings to enforce, e.g. "model" "opus". */ -}}
+{{- $settings := dict -}}
+
+{{- $c := dict -}}
+{{- if trim .chezmoi.stdin -}}
+{{-   $c = fromJson .chezmoi.stdin -}}
+{{- end -}}
+{{- range $name, $source := $marketplaces -}}
+{{-   $c = setValueAtPath (list "extraKnownMarketplaces" $name "source") $source $c -}}
+{{- end -}}
+{{- range $plugins -}}
+{{-   $c = setValueAtPath (list "enabledPlugins" .) true $c -}}
+{{- end -}}
+{{- range $key, $value := $env -}}
+{{-   $c = setValueAtPath (list "env" $key) $value $c -}}
+{{- end -}}
+{{- range $key, $value := $settings -}}
+{{-   $c = setValueAtPath (list $key) $value $c -}}
+{{- end -}}
+{{- /* Already up to date: keep the file as the harness wrote it. */ -}}
+{{- if and (trim .chezmoi.stdin) (eq (toJson (fromJson .chezmoi.stdin)) (toJson $c)) -}}
+{{-   .chezmoi.stdin -}}
+{{- else -}}
+{{    toPrettyJson "  " $c -}}
+{{- end -}}

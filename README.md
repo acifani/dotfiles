@@ -6,7 +6,7 @@ Personal dotfiles for macOS and Linux, managed with [chezmoi](https://www.chezmo
 
 1. macOS only: install [Homebrew](https://brew.sh/).
 2. Install [chezmoi](https://www.chezmoi.io/install/) and [mise](https://mise.jdx.dev/getting-started.html). Neither is installed by this repo.
-3. Apply, answering the prompts (profile, git emails, dev tools, docker helpers, cask directory):
+3. Apply, answering the prompts (profile, git emails, dev tools, docker helpers, cask directory, coding harnesses):
 
    ```shell
    chezmoi init --apply acifani
@@ -17,7 +17,7 @@ Personal dotfiles for macOS and Linux, managed with [chezmoi](https://www.chezmo
    ```shell
    chezmoi init --apply \
      --promptChoice "Profile=work" \
-     --promptBool "Install dev tools=false,Install docker helpers=true,Sign git commits with SSH=false" \
+     --promptBool "Install dev tools=false,Install docker helpers=true,Sign git commits with SSH=false,Configure Claude Code plugins and skills=true,Configure Codex plugins and skills=true,Configure OpenCode plugins and skills=false" \
      --promptString "Git email=me@example.com,Git email for ~/work (empty for none)=me@work.com,Cask install directory=~/Applications" \
      acifani
    ```
@@ -31,6 +31,19 @@ chezmoi init              # answer newly added prompts; re-run after changing th
 chezmoi edit-config       # change an answer (profile, dev, docker, appdir, workEmail...), then apply
 chezmoi data              # show this machine's answers
 ```
+
+## Coding harnesses
+
+The `claude`, `codex` and `opencode` flags pick which harnesses get plugins and skills.
+
+```shell
+chezmoi edit ~/.claude/settings.json             # Claude plugins and settings
+chezmoi edit ~/.config/opencode/opencode.jsonc   # OpenCode plugins, skills and settings
+chezmoi edit ~/.codex/config.toml                # Codex settings
+chezmoi cd                                       # Codex plugins and shared skills live in .chezmoiscripts/
+```
+
+Applies only add. To drop something, remove it from the list and uninstall it by hand.
 
 ## Day to day
 

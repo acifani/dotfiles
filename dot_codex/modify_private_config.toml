@@ -1,0 +1,25 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /*
+  Enforces the settings below in ~/.codex/config.toml. Codex writes this file
+  too (trust levels, tui, MCP servers), so other keys are left alone.
+  Plugins are installed by run_onchange_after_30-codex-plugins.sh.
+
+  While $settings is empty the file passes through untouched. Once it has a
+  key, the TOML round-trip drops comments and sorts keys on every apply.
+*/ -}}
+
+{{- /* Top-level settings to enforce, e.g. "model" "gpt-6.1-terra". */ -}}
+{{- $settings := dict -}}
+
+{{- if $settings -}}
+{{-   $c := dict -}}
+{{-   if trim .chezmoi.stdin -}}
+{{-     $c = fromToml .chezmoi.stdin -}}
+{{-   end -}}
+{{-   range $key, $value := $settings -}}
+{{-     $c = setValueAtPath (list $key) $value $c -}}
+{{-   end -}}
+{{    toToml $c }}
+{{- else -}}
+{{-   .chezmoi.stdin -}}
+{{- end -}}

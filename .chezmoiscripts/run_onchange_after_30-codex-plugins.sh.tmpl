@@ -1,0 +1,26 @@
+{{- if .codex -}}
+#!/bin/bash
+# Installs Codex plugins. Re-runs whenever this file changes.
+# Additive: removing an entry here does not uninstall it (`codex plugin remove`).
+set -euo pipefail
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+
+if ! command -v codex >/dev/null; then
+    echo "codex not found; skipping Codex plugins. Install it, then re-run:" >&2
+    echo "  chezmoi execute-template < \"\$(chezmoi source-path)/.chezmoiscripts/run_onchange_after_30-codex-plugins.sh.tmpl\" | bash" >&2
+    exit 0
+fi
+
+# Sources must match what's in ~/.codex/config.toml, or Codex refuses the add.
+marketplaces=(
+    https://github.com/michael-denyer/pstack-claude.git
+    https://github.com/mattpocock/skills.git
+)
+plugins=(
+    pstack@pstack-claude
+    mattpocock-skills@mattpocock
+)
+
+for m in "${marketplaces[@]}"; do codex plugin marketplace add "$m"; done
+for p in "${plugins[@]}"; do codex plugin add "$p"; done
+{{- end }}
