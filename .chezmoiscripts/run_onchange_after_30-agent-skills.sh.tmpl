@@ -12,9 +12,9 @@ set -euo pipefail
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
 
 if ! command -v npx >/dev/null; then
-    echo "npx not found (node comes with the dev flag); skipping skills. Install it, then re-run:" >&2
-    echo "  chezmoi execute-template < \"\$(chezmoi source-path)/.chezmoiscripts/run_onchange_after_30-agent-skills.sh.tmpl\" | bash" >&2
-    exit 0
+    # Fail so chezmoi doesn't record this script as run and retries it on the next apply.
+    echo "npx not found (node comes with the dev flag). Install it, then run chezmoi apply again." >&2
+    exit 1
 fi
 
 agents=({{ $agents | join " " }})

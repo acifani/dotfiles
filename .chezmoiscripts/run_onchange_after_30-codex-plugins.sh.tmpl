@@ -6,9 +6,9 @@ set -euo pipefail
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
 
 if ! command -v codex >/dev/null; then
-    echo "codex not found; skipping Codex plugins. Install it, then re-run:" >&2
-    echo "  chezmoi execute-template < \"\$(chezmoi source-path)/.chezmoiscripts/run_onchange_after_30-codex-plugins.sh.tmpl\" | bash" >&2
-    exit 0
+    # Fail so chezmoi doesn't record this script as run and retries it on the next apply.
+    echo "codex not found. Install it, then run chezmoi apply again." >&2
+    exit 1
 fi
 
 # Sources must match what's in ~/.codex/config.toml, or Codex refuses the add.

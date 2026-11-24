@@ -35,6 +35,7 @@ chezmoi data              # show this machine's answers
 ## Coding harnesses
 
 The `claude`, `codex` and `opencode` flags pick which harnesses get plugins and skills.
+The shared skills need `npx` (node comes with the dev flag) and Codex's plugins need `codex`: until they are installed, `chezmoi apply` fails at that step and retries it on the next apply.
 
 ```shell
 chezmoi edit ~/.claude/settings.json             # Claude plugins and settings
