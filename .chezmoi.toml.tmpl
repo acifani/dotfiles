@@ -19,6 +19,7 @@
 {{-   $sshSigningKey = promptStringOnce . "sshSigningKey" "Public SSH key to sign with" "~/.ssh/id_ed25519.pub" -}}
 {{- end -}}
 
+sourceDir = {{ .chezmoi.sourceDir | quote }}
 umask = 0o022
 
 [data]

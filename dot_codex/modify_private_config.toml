@@ -1,5 +1,9 @@
 {{- /* chezmoi:modify-template */ -}}
-{{- $settings := dict -}}
+{{- $settings := dict
+      "features.remote_control"    true
+      "tui.status_line"            (list "model-with-reasoning" "current-dir" "thread-name" "context-used" "five-hour-limit" "weekly-limit")
+      "tui.status_line_use_colors" true
+-}}
 
 {{- if $settings -}}
 {{-   $config := dict -}}
@@ -7,9 +11,13 @@
 {{-     $config = fromToml .chezmoi.stdin -}}
 {{-   end -}}
 {{-   range $key, $value := $settings -}}
-{{-     $config = setValueAtPath (list $key) $value $config -}}
+{{-     $config = setValueAtPath $key $value $config -}}
 {{-   end -}}
-{{    toToml $config }}
+{{-   if and (trim .chezmoi.stdin) (eq (toJson (fromToml .chezmoi.stdin)) (toJson $config)) -}}
+{{-     .chezmoi.stdin -}}
+{{-   else -}}
+{{      toToml $config }}
+{{-   end -}}
 {{- else -}}
 {{-   .chezmoi.stdin -}}
 {{- end -}}
