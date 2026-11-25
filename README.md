@@ -39,6 +39,7 @@ The shared skills need `npx` (node comes with the dev flag) and Codex's plugins 
 
 ```shell
 chezmoi edit ~/.claude/settings.json             # Claude plugins and settings
+chezmoi edit ~/.claude/statusline-command.sh     # Claude status line
 chezmoi edit ~/.config/opencode/opencode.jsonc   # OpenCode plugins, skills and settings
 chezmoi edit ~/.codex/config.toml                # Codex settings
 chezmoi cd                                       # Codex plugins and shared skills live in .chezmoiscripts/

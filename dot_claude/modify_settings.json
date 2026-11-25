@@ -20,7 +20,9 @@
       "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" "1"
 -}}
 {{- /* Top-level settings to enforce, e.g. "model" "opus". */ -}}
-{{- $settings := dict -}}
+{{- $settings := dict
+      "statusLine" (dict "type" "command" "command" (joinPath .chezmoi.homeDir ".claude/statusline-command.sh"))
+-}}
 
 {{- $c := dict -}}
 {{- if trim .chezmoi.stdin -}}
