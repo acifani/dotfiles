@@ -1,12 +1,9 @@
 {{- if .codex -}}
 #!/bin/bash
-# Installs Codex plugins. Re-runs whenever this file changes.
-# Additive: removing an entry here does not uninstall it (`codex plugin remove`).
 set -euo pipefail
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
 
 if ! command -v codex >/dev/null; then
-    # Fail so chezmoi doesn't record this script as run and retries it on the next apply.
     echo "codex not found. Install it, then run chezmoi apply again." >&2
     exit 1
 fi

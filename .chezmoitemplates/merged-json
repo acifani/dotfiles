@@ -1,0 +1,7 @@
+{{- $current := index . 0 -}}
+{{- $merged := index . 1 -}}
+{{- if and (trim $current) (eq (toJson (fromJson $current)) (toJson $merged)) -}}
+{{-   $current -}}
+{{- else -}}
+{{-   toPrettyJson "  " $merged -}}
+{{- end -}}

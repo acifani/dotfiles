@@ -4,15 +4,10 @@
 {{- if .opencode }}{{ $agents = append $agents "opencode" }}{{ end -}}
 {{- if $agents -}}
 #!/bin/bash
-# Installs skills that no plugin ships, at their latest version, into
-# ~/.agents/skills (read by Codex, OpenCode, Cursor) and linked into
-# ~/.claude/skills. Re-runs whenever this file or the harness flags change.
-# Additive: removing an entry here does not uninstall it (`npx skills remove -g`).
 set -euo pipefail
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
 
 if ! command -v npx >/dev/null; then
-    # Fail so chezmoi doesn't record this script as run and retries it on the next apply.
     echo "npx not found (node comes with the dev flag). Install it, then run chezmoi apply again." >&2
     exit 1
 fi
@@ -21,7 +16,5 @@ agents=({{ $agents | join " " }})
 agent_args=()
 for a in "${agents[@]}"; do agent_args+=(-a "$a"); done
 
-# Run outside any project so the skills CLI never picks project scope.
-cd "$HOME"
 npx -y skills add ast-grep/agent-skill -s ast-grep -s ast-grep-outline -g "${agent_args[@]}" -y
 {{- end }}

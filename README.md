@@ -34,18 +34,18 @@ chezmoi data              # show this machine's answers
 
 ## Coding harnesses
 
-The `claude`, `codex` and `opencode` flags pick which harnesses get plugins and skills.
-The shared skills need `npx` (node comes with the dev flag) and Codex's plugins need `codex`: until they are installed, `chezmoi apply` fails at that step and retries it on the next apply.
+Turn on the `claude`, `codex` and `opencode` flags for the harnesses this machine uses.
+Install `npx` (node comes with the dev flag) and, for Codex, `codex` first: without them `chezmoi apply` fails at that step.
 
 ```shell
 chezmoi edit ~/.claude/settings.json             # Claude plugins and settings
 chezmoi edit ~/.claude/statusline-command.sh     # Claude status line
-chezmoi edit ~/.config/opencode/opencode.jsonc   # OpenCode plugins, skills and settings
-chezmoi edit ~/.codex/config.toml                # Codex settings
+chezmoi edit ~/.config/opencode/opencode.json    # OpenCode plugins and skills
+chezmoi edit ~/.codex/config.toml                # Codex settings; adding one drops the file's comments and sorts its keys
 chezmoi cd                                       # Codex plugins and shared skills live in .chezmoiscripts/
 ```
 
-Applies only add. To drop something, remove it from the list and uninstall it by hand.
+To drop a plugin, skill or setting, remove it from its list, then uninstall or change it by hand: apply puts back any Claude or OpenCode entry that is still listed.
 
 ## Day to day
 

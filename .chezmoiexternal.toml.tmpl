@@ -9,9 +9,6 @@
     refreshPeriod = "168h"
 {{- if .opencode }}
 
-# OpenCode has no plugin marketplace, so it gets Matt's skills from a clone.
-# It lives outside OpenCode's scanned skill dirs: the repo also holds
-# in-progress/misc skills, and opencode.jsonc points only at the shipped ones.
 [".local/share/opencode-skills/mattpocock"]
     type = "git-repo"
     url = "https://github.com/mattpocock/skills.git"
