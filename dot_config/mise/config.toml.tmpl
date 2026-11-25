@@ -20,10 +20,14 @@ bun = "latest"
 gh = "latest"
 git-filter-repo = "latest"
 go = "latest"
-node = "lts"
 pnpm = "latest"
 python = "latest"
 uv = "latest"
+{{- end }}
+{{- if or .dev .claude .codex .opencode }}
+
+# node
+node = "lts"
 {{- end }}
 {{- if eq .profile "work" }}
 

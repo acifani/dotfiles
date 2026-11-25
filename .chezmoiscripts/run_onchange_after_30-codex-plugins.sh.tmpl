@@ -3,11 +3,6 @@
 set -euo pipefail
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
 
-if ! command -v codex >/dev/null; then
-    echo "codex not found. Install it, then run chezmoi apply again." >&2
-    exit 1
-fi
-
 # Sources must match what's in ~/.codex/config.toml, or Codex refuses the add.
 marketplaces=(
     https://github.com/michael-denyer/pstack-claude.git

@@ -7,11 +7,6 @@
 set -euo pipefail
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
 
-if ! command -v npx >/dev/null; then
-    echo "npx not found (node comes with the dev flag). Install it, then run chezmoi apply again." >&2
-    exit 1
-fi
-
 agents=({{ $agents | join " " }})
 agent_args=()
 for a in "${agents[@]}"; do agent_args+=(-a "$a"); done
