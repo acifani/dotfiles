@@ -52,3 +52,5 @@ Session.vim
 .specify
 .serena
 .claude
+
+**/.claude/settings.local.json
