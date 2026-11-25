@@ -1,4 +1,6 @@
 #!/bin/sh
+export LC_ALL=C
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 eval "$(jq -r '@sh "
   cwd=\(.workspace.project_dir // .workspace.current_dir // .cwd)
   model=\(.model.display_name // "")
@@ -62,8 +64,8 @@ if git -C "$cwd" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   changes=$(git -C "$cwd" --no-optional-locks status --porcelain 2>/dev/null)
   if [ -n "$changes" ]; then
     flags=""
-    echo "$changes" | grep -q '^[MADRC]' && flags="$flags+"
-    echo "$changes" | grep -q '^.[MD]' && flags="$flags!"
+    echo "$changes" | grep -q '^[MADRCTU]' && flags="$flags+"
+    echo "$changes" | grep -q '^.[MDTU]' && flags="$flags!"
     echo "$changes" | grep -q '^??' && flags="$flags?"
     line="$line ${esc}[31m${flags}${reset}"
   fi
