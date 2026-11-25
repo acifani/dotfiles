@@ -1,0 +1,23 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $plugins := list
+      "github:michael-denyer/pstack-claude#main"
+-}}
+{{- $skills := list
+      "~/.local/share/opencode-skills/mattpocock/skills/engineering"
+      "~/.local/share/opencode-skills/mattpocock/skills/productivity"
+-}}
+
+{{- $config := dict -}}
+{{- if trim .chezmoi.stdin -}}
+{{-   $config = fromJson .chezmoi.stdin -}}
+{{- end -}}
+{{- range $key, $wanted := dict "plugins" $plugins "skills" $skills -}}
+{{-   $entries := get $config $key | default list -}}
+{{-   range $wanted -}}
+{{-     if not (has . $entries) -}}
+{{-       $entries = append $entries . -}}
+{{-     end -}}
+{{-   end -}}
+{{-   $config = set $config $key $entries -}}
+{{- end -}}
+{{- includeTemplate "merged-json" (list .chezmoi.stdin $config) -}}

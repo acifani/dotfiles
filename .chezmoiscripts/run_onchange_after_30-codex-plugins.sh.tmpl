@@ -1,0 +1,18 @@
+{{- if .codex -}}
+#!/bin/bash
+set -euo pipefail
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+
+# Sources must match what's in ~/.codex/config.toml, or Codex refuses the add.
+marketplaces=(
+    https://github.com/michael-denyer/pstack-claude.git
+    https://github.com/mattpocock/skills.git
+)
+plugins=(
+    pstack@pstack-claude
+    mattpocock-skills@mattpocock
+)
+
+for m in "${marketplaces[@]}"; do codex plugin marketplace add "$m"; done
+for p in "${plugins[@]}"; do codex plugin add "$p"; done
+{{- end }}

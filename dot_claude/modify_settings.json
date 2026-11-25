@@ -1,0 +1,35 @@
+{{- /* chezmoi:modify-template */ -}}
+
+{{- $marketplaces := dict
+      "cursor-plugins" (dict "source" "github" "repo" "cursor/plugins")
+      "mattpocock"     (dict "source" "github" "repo" "mattpocock/skills")
+-}}
+{{- $plugins := list
+      "pstack@cursor-plugins"
+      "mattpocock-skills@mattpocock"
+-}}
+{{- $env := dict
+      "CLAUDE_CODE_EXPERIMENTAL_CODE_MODE"   "1"
+      "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" "1"
+-}}
+{{- $settings := dict
+      "statusLine" (dict "type" "command" "command" (joinPath .chezmoi.homeDir ".claude/statusline-command.sh"))
+-}}
+
+{{- $config := dict -}}
+{{- if trim .chezmoi.stdin -}}
+{{-   $config = fromJson .chezmoi.stdin -}}
+{{- end -}}
+{{- range $name, $source := $marketplaces -}}
+{{-   $config = setValueAtPath (list "extraKnownMarketplaces" $name "source") $source $config -}}
+{{- end -}}
+{{- range $plugins -}}
+{{-   $config = setValueAtPath (list "enabledPlugins" .) true $config -}}
+{{- end -}}
+{{- range $key, $value := $env -}}
+{{-   $config = setValueAtPath (list "env" $key) $value $config -}}
+{{- end -}}
+{{- range $key, $value := $settings -}}
+{{-   $config = setValueAtPath (list $key) $value $config -}}
+{{- end -}}
+{{- includeTemplate "merged-json" (list .chezmoi.stdin $config) -}}

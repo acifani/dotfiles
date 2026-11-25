@@ -1,0 +1,15 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $settings := dict -}}
+
+{{- if $settings -}}
+{{-   $config := dict -}}
+{{-   if trim .chezmoi.stdin -}}
+{{-     $config = fromToml .chezmoi.stdin -}}
+{{-   end -}}
+{{-   range $key, $value := $settings -}}
+{{-     $config = setValueAtPath (list $key) $value $config -}}
+{{-   end -}}
+{{    toToml $config }}
+{{- else -}}
+{{-   .chezmoi.stdin -}}
+{{- end -}}

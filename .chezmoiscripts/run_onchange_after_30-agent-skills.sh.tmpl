@@ -1,0 +1,15 @@
+{{- $agents := list -}}
+{{- if .claude }}{{ $agents = append $agents "claude-code" }}{{ end -}}
+{{- if .codex }}{{ $agents = append $agents "codex" }}{{ end -}}
+{{- if .opencode }}{{ $agents = append $agents "opencode" }}{{ end -}}
+{{- if $agents -}}
+#!/bin/bash
+set -euo pipefail
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+
+agents=({{ $agents | join " " }})
+agent_args=()
+for a in "${agents[@]}"; do agent_args+=(-a "$a"); done
+
+npx -y skills add ast-grep/agent-skill -s ast-grep -s ast-grep-outline -g "${agent_args[@]}" -y
+{{- end }}

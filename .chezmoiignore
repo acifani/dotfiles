@@ -1,4 +1,6 @@
 README.md
+AGENTS.md
+CLAUDE.md
 
 {{ if not .dev }}
 .config/gh
@@ -12,6 +14,19 @@ README.md
 
 {{ if not (and (eq .profile "work") .workEmail) }}
 .gitconfig-work
+{{ end }}
+
+{{ if not .claude }}
+.claude
+{{ end }}
+
+{{ if not .codex }}
+.codex
+{{ end }}
+
+{{ if not .opencode }}
+.config/opencode
+.local/share/opencode-skills
 {{ end }}
 
 {{ if ne .chezmoi.os "darwin" }}
