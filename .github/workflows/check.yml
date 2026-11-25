@@ -1,0 +1,35 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        flags: [true, false]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install chezmoi
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Answer the prompts
+        run: >-
+          chezmoi init --source "$GITHUB_WORKSPACE"
+          --promptChoice "Profile=work"
+          --promptBool "Install dev tools=${{ matrix.flags }},Install docker helpers=${{ matrix.flags }},Sign git commits with SSH=${{ matrix.flags }},Configure Claude Code plugins and skills=${{ matrix.flags }},Configure Codex plugins and skills=${{ matrix.flags }},Configure OpenCode plugins and skills=${{ matrix.flags }}"
+          --promptString "Git email=me@example.com,Git email for ~/work (empty for none)=me@work.com,Public SSH key to sign with=~/.ssh/id.pub"
+      - name: Render every file
+        run: |
+          mkdir "$RUNNER_TEMP/home"
+          chezmoi archive --source "$GITHUB_WORKSPACE" --exclude externals --format tar | tar -xm -C "$RUNNER_TEMP/home"
+      - name: Validate harness configs
+        if: matrix.flags
+        working-directory: ${{ runner.temp }}/home
+        run: |
+          uvx check-jsonschema --schemafile https://json.schemastore.org/claude-code-settings.json .claude/settings.json
+          uvx check-jsonschema --schemafile https://opencode.ai/config.json .config/opencode/opencode.json
