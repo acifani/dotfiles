@@ -41,6 +41,7 @@ TODO.local.md
 
 # ── AI tooling (personal state only) ──
 **/.claude/settings.local.json
+**/.claude/worktrees/
 CLAUDE.local.md
 
 # ── Tool caches ───────────────────────
