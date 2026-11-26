@@ -11,5 +11,5 @@ agents=({{ $agents | join " " }})
 agent_args=()
 for a in "${agents[@]}"; do agent_args+=(-a "$a"); done
 
-npx -y skills add ast-grep/agent-skill -s ast-grep -s ast-grep-outline -g "${agent_args[@]}" -y
+npx -y skills add https://github.com/ast-grep/agent-skill -s ast-grep -s ast-grep-outline -g "${agent_args[@]}" -y
 {{- end }}
